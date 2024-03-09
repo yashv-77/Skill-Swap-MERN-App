@@ -47,7 +47,7 @@ const registerController = ExAsyncHandler(async (req, res) => {
 	// create new entry in database
 	try {
 		const user = await TheUser.create({
-			name, //  same as 'name':'name'
+			name, 
 			email,
 			password: hashedPassword,
 		});
