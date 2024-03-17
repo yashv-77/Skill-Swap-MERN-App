@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import BrandName from "../../assets/brandName.svg?react";
 import BrandLogo from "../../assets/brandLogo.svg?react";
+import { useNavigate } from 'react-router-dom';
 
 import { Link, Navigate } from "react-router-dom";
 import RegisterSvg from "../../assets/registerSvg2.svg?react";
@@ -24,10 +25,13 @@ export default function Register() {
 	const [passwordError, setPasswordError] = useState("");
 
 	// validation
-	const [isloading, setIsloading] = useState(false);
-	const [showAlert, setShowAlert] = useState(false);
-	const [isChecked, setIsChecked] = useState("false");
+	const [isloading, setIsloading] = useState(false);		// sets loading prop of Button
+	const [showSuccessAlert, setshowSuccessAlert] = useState(false);
+	const [showFailedAlert, setshowFailedAlert] = useState(false);
+	const [showErrorAlert, setshowErrorAlert] = useState(false);
 
+	const [isChecked, setIsChecked] = useState("false");
+	const navigate = useNavigate();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -71,23 +75,34 @@ export default function Register() {
 		if (formIsValid && areFieldsFilled) {
 			try {
 				await new Promise(resolve => setTimeout(resolve, 1000));
-				const response = await axios.post('http://localhost:6001/user/register', { name, email, password });
+				const response = await axios.post('http://localhost:6001/api/register', { name, email, password });
 				console.log(response.data);
 				// Handle the response here
+				localStorage.setItem("UserLocalData", JSON.stringify(response));
 				setIsloading(false);
-				setShowAlert(true);
-				Navigate('/login');
+				setTimeout(() => navigate('/app'), 2000);
+				// navigate('/app');
+
+				if (response.status === 200) {
+					setshowSuccessAlert(true);
+					setTimeout(() => setshowSuccessAlert(false), 5000); // Hide after 5 seconds
+				  } else {
+					setshowFailedAlert(true);
+					setTimeout(() => setshowFailedAlert(false), 5000); // Hide after 5 seconds
+				  }
+
 			} catch (error) {
 				console.log("Error in registering user", error);
+				setshowErrorAlert(true);
+				setTimeout(() => setshowErrorAlert(false), 5000);
 				// Handle the error here
 			}
-
+			
 		} else {
 			setIsloading(false);
+			
 			console.log("Form validation failed");
 		}
-
-
 	};
 
 
@@ -237,7 +252,7 @@ export default function Register() {
 						</div>
 					</div>
 				</div>
-				{showAlert && (
+				{showSuccessAlert && (
 				<div className="absolute bottom-5 right-5">
 					<Alert animate={{
 						mount: { x: 0 },
@@ -249,6 +264,33 @@ export default function Register() {
 							<path d="M8.5 9.5L12 13L21.0002 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>}
 						color="green">You Are Succesfully Registered</Alert>
+				</div>)}
+				{showErrorAlert && (
+				<div className="absolute bottom-5 right-5">
+					<Alert animate={{
+						mount: { x: 0 },
+						unmount: { x: 200 },
+					}}
+						className="rounded-l-3xl rounded-b-2xl "
+						icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+						<path d="M5.75 5L19.75 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M22.75 12C22.75 6.47715 18.2728 2 12.75 2C7.22715 2 2.75 6.47715 2.75 12C2.75 17.5228 7.22715 22 12.75 22C18.2728 22 22.75 17.5228 22.75 12Z" stroke="currentColor" stroke-width="1.5" />
+					</svg>}
+						color="red">An Error Occured </Alert>
+				</div>)}
+				{showFailedAlert && (
+				<div className="absolute bottom-5 right-5">
+					<Alert animate={{
+						mount: { x: 0 },
+						unmount: { x: 200 },
+					}}
+						className="rounded-l-3xl rounded-b-2xl "
+						icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+						<path d="M5.32171 9.68293C7.73539 5.41199 8.94222 3.27651 10.5983 2.72681C11.5093 2.4244 12.4907 2.4244 13.4017 2.72681C15.0578 3.27651 16.2646 5.41199 18.6783 9.68293C21.092 13.9539 22.2988 16.0893 21.9368 17.8293C21.7376 18.7866 21.2469 19.6549 20.535 20.3097C19.241 21.5 16.8274 21.5 12 21.5C7.17265 21.5 4.75897 21.5 3.46496 20.3097C2.75308 19.6549 2.26239 18.7866 2.06322 17.8293C1.70119 16.0893 2.90803 13.9539 5.32171 9.68293Z" stroke="currentColor" stroke-width="1.5" />
+						<path d="M11.992 16H12.001" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M12 13L12 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>}
+						color="orange">This Email is Already Registerd With Another User</Alert>
 				</div>)}
 			</div>
 		</>

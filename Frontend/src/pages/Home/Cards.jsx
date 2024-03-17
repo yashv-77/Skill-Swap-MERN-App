@@ -1,5 +1,6 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import BlackButton from "../../components/buttons/BlackButton";
+import { Link } from "react-router-dom";
 
 export function Cards({ color, head, para, svg, classes }) {
   return (
@@ -20,7 +21,8 @@ export function Cards({ color, head, para, svg, classes }) {
           {para}
         </Typography>
       </CardBody>
-      <BlackButton show="">
+      <Link to={'/register-user'} >
+      <BlackButton >
         Get Started
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +38,7 @@ export function Cards({ color, head, para, svg, classes }) {
           ></path>
         </svg>
       </BlackButton>
+      </Link>
     </Card>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Avatar, Badge, Tooltip, Chip, Popover, PopoverHandler, PopoverContent } from "@material-tailwind/react";
 import DeleteSvg from "../../../assets/icons/delete.svg?react";
 import LinkSvg from "../../../assets/icons/link.svg?react";
@@ -8,17 +8,18 @@ import MessageOther from './MessageOther';
 
 
 function ChatArea({ className }) {
+
     return (
         <div className={`flex flex-col h-screen border-x  ${className}`}>
             <div className=' flex items-center justify-between mx-7 py-3 align-top '>
 
-                <div className=' flex  items-center justify-between gap-5 '>
+                <div className='flex  items-center justify-between gap-5 '>
 
                     <div className=' '>
                         <Avatar src={'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600'} alt="avatar" size="lg" />
                     </div>
                     <div>
-                        <p className='font-semibold text-xl'>{'John Developer'}</p>
+                        <p className='font-semibold text-xl'>John Developer</p>
                         <Chip variant='ghost' color='green' value='online' className='inline' size='sm' />
                         {/* <p className='text-xs text-gray-600'>{'5.32 pm'}</p> */}
                     </div>

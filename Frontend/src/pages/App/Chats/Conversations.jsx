@@ -1,14 +1,16 @@
 import { Chip, Typography, Tooltip } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Homesvg, {Chatsvg,Peer,Task,Vcall,Bell} from "../../../assets/icons/dashsvg";
 import SearchSvg from "../../../assets/icons/search.svg?react";
 import UserChat from "./UserChat";
 
+
 function Conversations({ className }) {
+
 
    const[chats, setChats] = useState([
       {
-         name:"Veronica S",
+         name:"Veronica",
          avatar:'https://docs.material-tailwind.com/img/face-2.jpg',
          lastMessage:"Is this the last fsfsf fsf  fsf fsfmessage by the way",
          timeStamp: 'today',

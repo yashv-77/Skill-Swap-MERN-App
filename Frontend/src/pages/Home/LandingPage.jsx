@@ -9,7 +9,7 @@ import MyNavbar from "./Navbar";
 import Footer from "./Footer";
 
 
-function HomePage() {
+export default  function LandingPage() {
   return (
     <div className="relative">
       <MyNavbar/>
@@ -29,4 +29,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+

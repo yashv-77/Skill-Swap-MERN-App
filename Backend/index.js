@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const UserRoutes = require("./routes/UserRoutes");
+const ChatRoutes = require("./routes/ChatRoutes");
 
 const app = express();
 require("dotenv").config();
@@ -25,13 +26,10 @@ const connectdb = async ()=> {
 
 connectdb()
 
-app.get('/',(req,res) => {
-    res.send('api kaam kr rha h')
-})
-
-app.use('/user',UserRoutes);
+app.use('/api',UserRoutes);
+app.use('/api/chat',ChatRoutes);
  
 // Start server
 app.listen(process.env.PORT, () => {
     console.log("🗃️  Server is started and running");
-  });
+});

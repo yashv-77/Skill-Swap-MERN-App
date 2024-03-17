@@ -5,7 +5,9 @@ import { Outlet } from 'react-router'
 
 
 
+
 function MainLayout() {
+
   return (
     <>
         <div className='flex '>

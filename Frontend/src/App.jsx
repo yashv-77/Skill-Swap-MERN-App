@@ -1,41 +1,17 @@
 import React from "react";
-
-import HomePage from "./pages/Home/HomePage";
+import { RouterProvider } from "react-router-dom";
+import router from "./Router"
+import HomePage from "./pages/Home/LandingPage";
+import LandingPage from "./pages/Home/LandingPage";
 
 
 function App() {
 
-  
+
   return (
     <>
-    <HomePage/>
-      {/* <BrowserRouter>
-        <div>
-          <Routes>
-            <Route
-            path ='/'
-            element ={<HomePage/>}
-            />
-            
-            <Route
-            path ='/register'
-            element ={<Register/>}
-            />
-            
-            <Route
-            path ='/login'
-            element ={<Login/>}
-            />
-
-            <Route
-            path ='/mainlayout'
-            element ={<MainLayout/>}
-            />
-            
-
-          </Routes>
-        </div>
-      </BrowserRouter> */}
+      <RouterProvider router={router} />
+      {/* <LandingPage/> */}
     </>
   );
 }

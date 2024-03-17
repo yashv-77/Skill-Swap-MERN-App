@@ -17,7 +17,7 @@ function Container2() {
           <div className="flex md:flex-col items-center   gap-5 w-80">
             <h2>Exchange skills, build friendships</h2>
 
-            <>
+            <Link to={'/register-user'}>
               <PrimeButton>
                 Get Started
                 <svg
@@ -47,7 +47,7 @@ function Container2() {
                   </g>
                 </svg>
               </PrimeButton>
-            </>
+            </Link>
           </div>
         </div>
 

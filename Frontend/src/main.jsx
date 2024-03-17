@@ -11,25 +11,26 @@ import ChatLayout from "./pages/App/Chats/ChatLayout";
 import DashboardLayout from "./pages/App/Dashboard/DashboardLayout";
 import ErrorPage from "./pages/ErrorPage";
 
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" errorElement={<ErrorPage/>}>
-            <Route index element={<App/>}/>
-            <Route path="login" element={<Login/>}/>
-            <Route path="register-user" element={<Register/>}/>
-            <Route path="app" element={<MainLayout/>}>
-                <Route index element={<DashboardLayout/>} />
-                <Route path="messages" element={<ChatLayout/>} />
-            </Route>
-        </Route>
-    )
-)
 
+// const router = createBrowserRouter(
+//     createRoutesFromElements( 
+//         <Route path="/" errorElement={<ErrorPage/>}>
+//             <Route index element={<App/>}/>
+//             <Route path="login" element={<Login/>}/>
+//             <Route path="register-user" element={<Register/>}/>
+//             <Route path="app" element={<MainLayout/>}>
+//                 <Route path="dashboard" element={<DashboardLayout/>} />
+//                 <Route path="messages" element={<ChatLayout/>} />
+//             </Route>
+//         </Route>
+//     )
+// )
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    <>
         
-            <RouterProvider router={router}/>
+            {/* <RouterProvider router={router}/> */}
+            <App/>
         
-    </React.StrictMode>
+    </>
 );

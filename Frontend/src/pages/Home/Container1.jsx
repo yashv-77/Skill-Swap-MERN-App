@@ -30,7 +30,7 @@ function Container1() {
 							<span className="text-[#8c52ff]">like-minded peers!</span>
 						</Typography>
 
-						<>
+						<Link to={'/register-user'}>
 							<PrimeButton show="" customprop={true}>
 								Get Started
 								<svg
@@ -60,7 +60,7 @@ function Container1() {
 									</g>
 								</svg>
 							</PrimeButton>
-						</>
+						</Link>
 					</div>
 
 					{/* ----------------------right section-------------------- */}
