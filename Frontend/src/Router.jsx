@@ -5,12 +5,15 @@ import Login from "./pages/Home/Login";
 import DashboardLayout from "./pages/App/Dashboard/DashboardLayout";
 import ChatLayout from "./pages/App/Chats/ChatLayout";
 import LandingPage from "./pages/Home/LandingPage";
+import ErrorPage from "./pages/ErrorPage";
+import ProtectedRoutes from "./ProtectedRoutes";
 
  const router = createBrowserRouter(
     [
         {
             path:"/",
             element: <LandingPage />,
+            errorElement:<ErrorPage/>
         },
         {
             path:"register",
@@ -21,19 +24,25 @@ import LandingPage from "./pages/Home/LandingPage";
             element:<Login/>
         },
         {
-            path:"/app",
-            element:<MainLayout/>,
+            element:<ProtectedRoutes/>,
             children:[
                 {
-                    path:"dashboard",
-                    element:<DashboardLayout/>
+                    path:"/app",
+                    element:<MainLayout/>,
+                    children:[
+                        {
+                            path:"dashboard",
+                            element:<DashboardLayout/>
+                        },
+                        {
+                            path:"messages",
+                            element:<ChatLayout/>
+                        }
+                    ]
                 },
-                {
-                    path:"messages",
-                    element:<ChatLayout/>
-                }
-            ]
-        }
+            ],
+        },
+        
     ]
 )
 export default router;

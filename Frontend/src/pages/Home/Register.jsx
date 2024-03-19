@@ -76,15 +76,17 @@ export default function Register() {
 			try {
 				await new Promise(resolve => setTimeout(resolve, 1000));
 				const response = await axios.post('http://localhost:6001/api/register', { name, email, password });
-				console.log(response.data);
+				console.log(response.data, response.status);
 				// Handle the response here
-				localStorage.setItem("UserLocalData", JSON.stringify(response));
+				localStorage.removeItem("userLocalData", JSON.stringify(response.data));
+				localStorage.setItem("userLocalData", JSON.stringify(response.data));
 				setIsloading(false);
-				setTimeout(() => navigate('/app'), 2000);
+				
 				// navigate('/app');
 
 				if (response.status === 200) {
 					setshowSuccessAlert(true);
+					setTimeout(() => navigate('/app'), 2000);
 					setTimeout(() => setshowSuccessAlert(false), 5000); // Hide after 5 seconds
 				  } else {
 					setshowFailedAlert(true);

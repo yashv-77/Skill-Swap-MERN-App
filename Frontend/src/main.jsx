@@ -10,6 +10,7 @@ import MainLayout from "./pages/App/MainLayout";
 import ChatLayout from "./pages/App/Chats/ChatLayout";
 import DashboardLayout from "./pages/App/Dashboard/DashboardLayout";
 import ErrorPage from "./pages/ErrorPage";
+import { AuthContextProvider } from "./context/AuthContext";
 
 
 // const router = createBrowserRouter(
@@ -28,9 +29,7 @@ import ErrorPage from "./pages/ErrorPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <>
-        
-            {/* <RouterProvider router={router}/> */}
-            <App/>
-        
+        {/* <RouterProvider router={router}/> */}
+        <App />
     </>
 );

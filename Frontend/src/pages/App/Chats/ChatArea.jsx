@@ -5,10 +5,17 @@ import LinkSvg from "../../../assets/icons/link.svg?react";
 import SendSvg from "../../../assets/icons/send.svg?react";
 import MessageSelf from './MessageSelf';
 import MessageOther from './MessageOther';
+import { useOutletContext } from 'react-router';
+import { AuthContext } from '../../../context/AuthContext';
+
 
 
 function ChatArea({ className }) {
 
+    const {authUser, setAuthUser} = useContext(AuthContext);
+    console.log(authUser);
+    // const context = useOutletContext();
+    // console.log(context);
     return (
         <div className={`flex flex-col h-screen border-x  ${className}`}>
             <div className=' flex items-center justify-between mx-7 py-3 align-top '>
@@ -19,7 +26,7 @@ function ChatArea({ className }) {
                         <Avatar src={'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600'} alt="avatar" size="lg" />
                     </div>
                     <div>
-                        <p className='font-semibold text-xl'>John Developer</p>
+                        <p className='font-semibold text-xl'>john</p>
                         <Chip variant='ghost' color='green' value='online' className='inline' size='sm' />
                         {/* <p className='text-xs text-gray-600'>{'5.32 pm'}</p> */}
                     </div>

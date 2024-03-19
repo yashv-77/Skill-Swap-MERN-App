@@ -12,9 +12,17 @@ function ErrorPage() {
         >
             😵 Error: Page Not Found 😵
         </Typography>
+        <Typography
+        color='white'
+        variant='h6'
+        className='font-poppins'
+        >
+           Check Console for Errors
+        </Typography>
+        
         <Link to={'/'}>
-        <Button variant='text'
-        className=' p-6 text-md font-poppins shadow-2xl rounded-3xl'>
+        <Button variant='outlined'
+        className=' p-6 text-md text-white font-poppins shadow-2xl rounded-3xl'>
             Go To Home Page
         </Button>
         </Link>

@@ -58,16 +58,15 @@ function Login() {
 				console.log("Logged in");
 				setTimeout(() => navigate('/app'), 1000);
 				
+				localStorage.removeItem("userLocalData", JSON.stringify(response.data));
 				localStorage.setItem("userLocalData", JSON.stringify(response.data));
 
 				if (response.status === 200) {
-
 					setshowSuccessAlert(true);
 					setTimeout(() => setshowSuccessAlert(false), 5000); // Hide after 5 seconds
 				}
 				else {
 					console.log("No User Found");
-
 				}
 
 
