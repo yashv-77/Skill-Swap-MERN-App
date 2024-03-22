@@ -126,7 +126,7 @@ function Sidebar() {
                         <div className="py-1 cursor-pointer">
                             <Tooltip content='Profile' className='font-poppins rounded-full ' placement='top'>
                             <Avatar
-                                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                src={authUser?.avatar}
                                 alt="avatar"
                                 withBorder={true}
                                 className="p-0.5"

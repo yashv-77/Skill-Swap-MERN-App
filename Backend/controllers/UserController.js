@@ -80,7 +80,7 @@ const searchUserController = ExAsyncHandler(async(req,res) =>{
     $or:[
       {name:{$regex: req.query.search, $options: 'i'}}
     ]
-  }:{}
+  }:{} 
   
   const users = (await TheUser.find(keyword))
   res.send(users);

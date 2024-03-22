@@ -2,7 +2,6 @@ import React from 'react'
 import { Avatar,  } from "@material-tailwind/react";
 import { motion } from "framer-motion"
 
-
 function UserChat({ data }) {
     return (
         <motion.div whileTap={{ scale: 0.9 }} className='flex mt-2 p-3 gap-x-1 items-center cursor-pointer '>
@@ -28,4 +27,4 @@ function UserChat({ data }) {
     )
 }
 
-export default UserChat
+export default UserChat;

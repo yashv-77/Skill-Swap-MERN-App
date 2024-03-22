@@ -23,6 +23,7 @@ function Login() {
 		const navigate = useNavigate();
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		setIsloading(true);
 
 		// Check if all fields are filled
 		const areFieldsFilled = email && password;
@@ -53,6 +54,8 @@ function Login() {
 				await new Promise(resolve => setTimeout(resolve, 1000));
 				const response = await axios.post('http://localhost:6001/api/login', { email, password });
 				console.log(response.data);
+				console.log(response);
+
 				// Handle the response here
 				setIsloading(false);
 				console.log("Logged in");
@@ -84,6 +87,7 @@ function Login() {
 				}
 			}
 		} else {
+			setIsloading(false);
 
 			console.log("Form validation failed");
 		}
@@ -169,7 +173,7 @@ function Login() {
 								<Button
 									type="submit"
 									varient=""
-									loading=""
+									loading={isloading}
 									color=""
 									className="mt-6 rounded-full bg-[#8c52ff] flex justify-center font-poppins py-4"
 									fullWidth
