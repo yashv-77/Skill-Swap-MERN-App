@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const UserRoutes = require("./routes/UserRoutes");
 const ChatRoutes = require("./routes/ChatRoutes");
+const MessageRoutes = require("./routes/MessagesRoutes");
 
 const app = express();
 require("dotenv").config();
@@ -28,6 +29,7 @@ connectdb()
 
 app.use('/api',UserRoutes);
 app.use('/api/chat',ChatRoutes);
+app.use('/api/messages',MessageRoutes);
  
 // Start server
 app.listen(process.env.PORT, () => {

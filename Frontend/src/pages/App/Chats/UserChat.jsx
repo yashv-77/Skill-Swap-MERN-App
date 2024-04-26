@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Avatar,  } from "@material-tailwind/react";
 import { motion } from "framer-motion"
+import { AuthContext } from '../../../context/AuthContext';
 
-function UserChat({ data }) {
+function UserChat({ data, onClick }) {
+
+    const { authUser, setAuthUser, selectedChat, setSelectedChat } = useContext(AuthContext);
+
     return (
-        <motion.div whileTap={{ scale: 0.9 }} className='flex mt-2 p-3 gap-x-1 items-center cursor-pointer '>
+        <motion.div whileTap={{ scale: 0.9 }} className='flex mt-2 p-3 gap-x-1 items-center cursor-pointer ' onClick={onClick}>
 
             <div className='w-[70px]'>
                 <Avatar src={data.avatar} alt="avatar" size="md" />

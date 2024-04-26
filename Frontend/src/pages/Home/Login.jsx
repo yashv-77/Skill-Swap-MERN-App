@@ -144,7 +144,7 @@ function Login() {
 											value={email}
 											type="text"
 											onChange={(e) => setEmail(e.target.value)}
-											className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
+											className=" w-full bg-gray-50 text-sm outline-none border-gray-500 border rounded-[16px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
 										/>
 
 										<p className=" text-center text-sm text-red-500">{emailError}</p>
@@ -163,7 +163,7 @@ function Login() {
 											value={password}
 											type="password"
 											onChange={(e) => setPassword(e.target.value)}
-											className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
+											className=" w-full bg-gray-50 text-sm outline-none border-gray-500 border rounded-[16px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
 										/>
 
 										<p className="text-sm text-center text-red-500">{passwordError}</p>

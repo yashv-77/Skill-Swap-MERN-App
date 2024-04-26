@@ -16,7 +16,7 @@ const accessChatController = ExAsyncHandler(async (req, res) => {
 	var isChat = await Chat.find({
 		isGroupChat: false,
 		$and: [
-			{ users: { $elemMatch: { $eq: req.user._id } } },	// current user.	in auth middleware, we have attached user to req
+			{ users: { $elemMatch: { $eq: req.user._id } } },	// current user. in auth middleware, we have attached user to req
 			{ users: { $elemMatch: { $eq: userId } } },		// other user
 		],
 	})
@@ -52,4 +52,28 @@ const accessChatController = ExAsyncHandler(async (req, res) => {
 	
 });
 
-module.exports = {accessChatController};
+const fetchChatController = ExAsyncHandler(async (req, res) => {
+	try{
+		await Chat.find({
+			users: { $elemMatch: { $eq: req.user._id } },
+		})
+			.populate("users", "-password")
+			.populate("latestMessage")
+			.populate("latestMessage.sender", "name avatar email")
+			.sort({ updatedAt: -1 })
+			.then(async (results) => {
+				results = await TheUser.populate(results, {
+				  path: "latestMessage.sender",
+				  select: "name avatar email",
+				});
+				res.status(200).send(results);
+			});	
+	}catch(error){
+		res.status(400);
+		console.log("❌📩❌ error in fetching chats ",error);
+
+	}
+	
+
+});
+module.exports = {accessChatController, fetchChatController};

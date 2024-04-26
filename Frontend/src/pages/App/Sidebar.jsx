@@ -14,14 +14,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 
-
-
 function Sidebar() {
     const navigate = useNavigate()
     const [selected, setSelected] = useState(null);
 
     const {authUser, setAuthUser} = useContext(AuthContext);
-    console.log("sidebar: ",authUser);
+    // console.log("sidebar: ",authUser);
 
     const logOut = () => {
         localStorage.removeItem('userLocalData');
@@ -37,9 +35,10 @@ function Sidebar() {
                 <NavLink to={'dashboard'}>
                     <li
                         onClick={() => setSelected(0)}
-                        className={`p-4 hover:bg-gray-200 ${selected === 0 ? "bg-second-500" : "bg-none"}  cursor-pointer rounded-full`}
+                        className={`p-4 flex text-sm items-center hover:bg-gray-200 ${selected === 0 ? "bg-second-500" : "bg-none"}   cursor-pointer rounded-full`}
                     >
                         <Homesvg />
+                        
                     </li>
                 </NavLink>
 
@@ -87,7 +86,7 @@ function Sidebar() {
                 </li>
             </Tooltip>
             <Tooltip
-                content="Tasks"
+                content="Notes"
                 placement="right"
                 className="rounded-full font-poppins bg-gray-900"
             >

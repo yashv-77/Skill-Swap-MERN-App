@@ -161,7 +161,7 @@ export default function Register() {
 												value={name}
 												type="text"
 												onChange={(e) => setName(e.target.value)}
-												className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
+												className=" w-full bg-gray-50 text-sm outline-none border-gray-500 border rounded-[16px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
 											/>
 
 											<p className="text-center text-sm h-[20px] text-red-500">{nameError}</p>
@@ -180,7 +180,7 @@ export default function Register() {
 												value={email}
 												type="text"
 												onChange={(e) => setEmail(e.target.value)}
-												className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
+												className=" w-full bg-gray-50 text-sm outline-none border-gray-500 border rounded-[16px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
 											/>
 
 											<p className="text-sm text-center h-[20px] text-red-500">{emailError}</p>
@@ -199,7 +199,7 @@ export default function Register() {
 												value={password}
 												type="password"
 												onChange={(e) => setPassword(e.target.value)}
-												className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
+												className=" w-full bg-gray-50 text-sm outline-none border-gray-500 border rounded-[16px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
 											/>
 
 											<p className="text-center h-[20px] text-sm text-red-500">{passwordError}</p>

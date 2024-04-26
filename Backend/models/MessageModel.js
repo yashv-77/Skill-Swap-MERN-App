@@ -6,15 +6,20 @@ const messageSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-    recieverId: {
+    // recieverId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: true,
+    // },
+    chatId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Chat",
         required: true,
     },
     
     message: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Chat",
+       type: String,
+       trim: true,
     },
 }, {timestamps: true});
 
