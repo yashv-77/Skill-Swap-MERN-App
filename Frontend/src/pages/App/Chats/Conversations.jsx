@@ -57,76 +57,76 @@ function Conversations({ className }) {
 			console.log("error in fetching chats", error);
 		}
 	}
-	// const [dummychats, setdummyChats] = useState([
-	// 	{
-	// 		name: "Veronica",
-	// 		avatar: 'https://docs.material-tailwind.com/img/face-2.jpg',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Jessy",
-	// 		avatar: 'https://images.pexels.com/photos/6274712/pexels-photo-6274712.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsfddgdg dgdgdgd gdd g dvg  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Mr. Nobody",
-	// 		avatar: 'https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Ultron",
-	// 		avatar: 'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Carl",
-	// 		avatar: 'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Micheal",
-	// 		avatar: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Trevor",
-	// 		avatar: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
+	const [dummychats, setdummyChats] = useState([
+		{
+			name: "Veronica",
+			avatar: 'https://docs.material-tailwind.com/img/face-2.jpg',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Jessy",
+			avatar: 'https://images.pexels.com/photos/6274712/pexels-photo-6274712.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsfddgdg dgdgdgd gdd g dvg  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Mr. Nobody",
+			avatar: 'https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Ultron",
+			avatar: 'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Carl",
+			avatar: 'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Micheal",
+			avatar: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Trevor",
+			avatar: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
 
-	// 	{
-	// 		name: "Ultron",
-	// 		avatar: 'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Carl",
-	// 		avatar: 'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Micheal",
-	// 		avatar: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
-	// 	{
-	// 		name: "Trevor",
-	// 		avatar: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=600',
-	// 		lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
-	// 		timeStamp: 'today',
-	// 	},
+		{
+			name: "Ultron",
+			avatar: 'https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Carl",
+			avatar: 'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Micheal",
+			avatar: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
+		{
+			name: "Trevor",
+			avatar: 'https://images.pexels.com/photos/4307869/pexels-photo-4307869.jpeg?auto=compress&cs=tinysrgb&w=600',
+			lastMessage: "Is this the last fsfsf fsf  fsf fsfmessage by the way",
+			timeStamp: 'today',
+		},
 
-	// ])
+	])
 
 	const accessChat = async (userId) => {
 		try {
@@ -219,8 +219,8 @@ return (
 				const otherUser = chat.users[0]._id === loggedInUserId ? chat.users[1] : chat.users[0];
 				return <UserChat data={otherUser} onClick={() => accessChat(otherUser)} />
 			})}
-			{/* {chats.map((chat) => {
-					return <UserChat data={chat.users[1]} />
+			{/* {dummychats.map((chat) => {
+					return <UserChat data={chat} />
 				})} */}
 		</div>
 

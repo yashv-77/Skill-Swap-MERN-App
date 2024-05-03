@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Avatar, Badge, Tooltip, Chip, Popover, PopoverHandler, PopoverContent } from "@material-tailwind/react";
+import { Avatar, Badge, Tooltip, Chip, Popover, PopoverHandler, PopoverContent, Spinner } from "@material-tailwind/react";
 import DeleteSvg from "../../../assets/icons/delete.svg?react";
 import LinkSvg from "../../../assets/icons/link.svg?react";
 import SendSvg from "../../../assets/icons/send.svg?react";
-import MessageSelf from './MessageSelf';
-import MessageOther from './MessageOther';
 
 import { AuthContext } from '../../../context/AuthContext';
 import axios from 'axios';
+import ScrollableFeed from './ScrollableFeed';
+import ScrollableChat from './ScrollableFeed';
 
 function ChatArea({ className }) {
 
@@ -15,6 +15,7 @@ function ChatArea({ className }) {
     const [newMessage, setNewMessage] = useState("");
     const { authUser, setAuthUser, selectedChat } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    const [authid, setauthid] = useState(authUser._id);
     // console.log(authUser);
     // const context = useOutletContext();
     console.log("selected chat ", selectedChat);
@@ -22,7 +23,7 @@ function ChatArea({ className }) {
 
     const sendMessage = async (event) => {
         if (event.key === "Enter" && newMessage) {
-            // event.preventDefault()
+            event.preventDefault()
             try {
                 const config = {
                     headers: {
@@ -34,7 +35,13 @@ function ChatArea({ className }) {
                     message: newMessage,
                     chatId: selectedChat._id,
                 }, config);
-                setMessages([...messages, data])
+                console.log("message sent ", data);
+                // setMessages([...messages, data])
+                setMessages(prevMessages => [...prevMessages, data])
+
+               
+                
+            
 
             } catch (error) {
                 console.log("error in sending message ", error);
@@ -52,9 +59,11 @@ function ChatArea({ className }) {
                     Authorization: `Bearer ${authUser.token}`
                 }
             }
+            setLoading(true);
             const { data } = await axios.get(`http://localhost:6001/api/messages/${selectedChat._id}`, config);
             setMessages(data);
             console.log("fetched messages ", data);
+            setLoading(false);
         } catch (error) {
             console.log("error in fetching messages ", error);
         }
@@ -90,39 +99,30 @@ function ChatArea({ className }) {
             </div>
 
             {/* Chat Container */}
-            <div className='p-5 bg-gray-200 max-h-[750px] flex flex-col  gap-5 overflow-auto'>
+            <div className='chatContain p-5 bg-gray-200 max-h-[750px] flex flex-col  gap-5 overflow-auto'>
                 
                 {
-                    messages
-                    .reverse()
-                    .map((message, index) => {
-                        // console.log("message.senderId: ", message.senderId._id);
-                        console.log("message check ", message);
-                        const sender = message.senderId._id;
-                        const self_id = authUser._id;
-                        // console.log("sender Id ", sender);
-                        // console.log("self Id ", self_id);
-                        if (sender === self_id) {
-                            return <MessageSelf key={index} message={message} />
-                        } else {
-                            return <MessageOther key={index} message={message} />
-                        }
-                    })
+                    loading?(<Spinner className=' size-6'></Spinner>):(<>
+                        <ScrollableChat messages={messages} id={authid} />
+                        {/* {
+                           messages
+                           .reverse()
+                           .map((message, index) => {
+                               
+                               const sender = message.senderId._id;
+                               const self_id = authUser._id;
+                               // console.log("authUser" ,authUser);
+                               // console.log("sender Id ", sender);
+                               if (sender === self_id) {
+                                   return <MessageSelf key={index} message={message} />
+                               } else {
+                                   return <MessageOther key={index} message={message} />
+                               }
+                           }) 
+                        } */}
+                    </>)
                 }
-                {/* <MessageSelf />
-                <MessageOther />
-                <MessageSelf />
-                <MessageOther />
-                <MessageSelf />
-                <MessageOther />
-                <MessageOther />
-                <MessageSelf />
-                <MessageOther />
-                <MessageSelf />
-                <MessageOther />
-                <MessageSelf />
-                <MessageSelf />
-                <MessageSelf /> */}
+              
 
 
             </div>

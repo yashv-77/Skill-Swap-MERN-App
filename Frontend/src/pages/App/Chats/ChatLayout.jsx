@@ -9,7 +9,7 @@ function ChatLayout() {
   const { authUser, setAuthUser, selectedChat, setSelectedChat } = useContext(AuthContext);
   return (
     <>
-      <div className="grid grid-cols-4 w-full h-screen">
+      <div className="grid grid-cols-4 w-full h-screen ml-[100px]">
         <Conversations className='col-start-1' />
         {selectedChat && 
         <ChatArea className='col-span-2' />}

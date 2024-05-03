@@ -17,6 +17,7 @@ module.exports = withMT({
       colors:{
         prime: {
           500:'#8c52ff',
+          600:'#8c52ff',
         },
         second: {
           500:'#9fffe4',

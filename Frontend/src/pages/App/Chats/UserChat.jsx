@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/AuthContext';
 function UserChat({ data, onClick }) {
 
     const { authUser, setAuthUser, selectedChat, setSelectedChat } = useContext(AuthContext);
-
+    console.log(data);
     return (
         <motion.div whileTap={{ scale: 0.9 }} className='flex mt-2 p-3 gap-x-1 items-center cursor-pointer ' onClick={onClick}>
 

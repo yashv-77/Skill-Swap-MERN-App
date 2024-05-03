@@ -32,7 +32,7 @@ function Sidebar() {
                 placement="right"
                 className="rounded-full  font-poppins bg-gray-900"
             >
-                <NavLink to={'dashboard'}>
+                <NavLink to={''}>
                     <li
                         onClick={() => setSelected(0)}
                         className={`p-4 flex text-sm items-center hover:bg-gray-200 ${selected === 0 ? "bg-second-500" : "bg-none"}   cursor-pointer rounded-full`}
@@ -103,7 +103,7 @@ function Sidebar() {
     );
 
     return (
-        <div className="flex">
+        <div className="fixed w-[100px]">
             <div className="flex flex-col h-screen items-center justify-between p-5 border-r-2">
                 <div className="flex flex-col items-center gap-y-10" >
                     <Tooltip
@@ -143,6 +143,8 @@ function Sidebar() {
                             {authUser?.name}
                            </Typography>
                         </MenuItem>
+
+                        <NavLink to={'user/profile'} className="outline-none">
                         <MenuItem className="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" color="#000000" fill="none">
                                 <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -150,6 +152,8 @@ function Sidebar() {
                             </svg>
                             <p>Profile</p>
                         </MenuItem>
+                        </NavLink>
+                        
                         <MenuItem className="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" color="#000000" fill="none">
                                 <path d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

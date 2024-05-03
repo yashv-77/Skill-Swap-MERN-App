@@ -7,6 +7,7 @@ import ChatLayout from "./pages/App/Chats/ChatLayout";
 import LandingPage from "./pages/Home/LandingPage";
 import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoutes from "./ProtectedRoutes";
+import UserProfile from "./components/UserProfile";
 
  const router = createBrowserRouter(
     [
@@ -31,12 +32,16 @@ import ProtectedRoutes from "./ProtectedRoutes";
                     element:<MainLayout/>,
                     children:[
                         {
-                            path:"dashboard",
+                            path:"",
                             element:<DashboardLayout/>
                         },
                         {
                             path:"messages",
                             element:<ChatLayout/>
+                        },
+                        {
+                            path:"user/profile",
+                            element:<UserProfile/>
                         }
                     ]
                 },
