@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import RegisterSvg from "../../assets/registerSvg2.svg?react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
 	const [name, setName] = useState("");
@@ -27,7 +28,7 @@ export default function Register() {
 
 	const [isChecked, setIsChecked] = useState("false");
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		// Check if all fields are filled
@@ -50,7 +51,6 @@ export default function Register() {
 		} else {
 			setEmailError("");
 		}
-
 		// Validate the password
 		if (!password) {
 			setPasswordError("Password is required");
@@ -59,17 +59,26 @@ export default function Register() {
 		} else {
 			setPasswordError("");
 		}
-
 		// Update the form validity
 		if (areFieldsFilled && !nameError && !emailError && !passwordError) {
-			setIsFormValid(true);
-			console.log("Form submitted successfully");
-			// Add more code here to handle the form submission
+			try {
+				const response = await axios.post('http://localhost:6001/user/register', { name, email, password });
+				console.log(response.data);
+				// Handle the response here
+			} catch (error) {
+				console.error("Error in registering user", error);
+				// Handle the error here
+			}
+					
 		} else {
 			setIsFormValid(false);
 			console.log("Form validation failed");
 		}
+
+	
 	};
+
+
 
 	return (
 		<>
@@ -177,7 +186,7 @@ export default function Register() {
 											</Typography>
 											<input
 											placeholder="*******"
-											value={email}
+											value={password}
 											type="password"
 											onChange={(e) => setPassword(e.target.value)}
 											className=" w-full bg-gray-100 text-sm outline-none border-gray-500 border rounded-[21px] p-4 hover:ring-2 focus:ring-2 focus:ring-prime-500"
